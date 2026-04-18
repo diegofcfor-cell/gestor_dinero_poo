@@ -35,4 +35,26 @@ class MovimientoController
         header("Location: index.php?controller=dashboard");
         exit;
     }
+
+    /* ========= ELIMINAR MOVIMIENTO ========= */
+    public function eliminar()
+    {
+        // Protección de sesión
+        if (!Session::has('usuario_id')) {
+            header("Location: index.php");
+            exit;
+        }
+
+        // Obtener ID del movimiento a eliminar
+        $id = $_GET['id'] ?? null;
+
+        if ($id) {
+            $movimiento = new Movimiento();
+            $movimiento->eliminar($id, Session::get('usuario_id'));
+        }
+
+        // Volver al dashboard
+        header("Location: index.php?controller=dashboard");
+        exit;
+    }
 }

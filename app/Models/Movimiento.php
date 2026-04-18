@@ -30,10 +30,26 @@ class Movimiento
         ]);
     }
 
+    /* ========= ELIMINAR MOVIMIENTO ========= */
+    public function eliminar($id, $usuario_id)
+    {
+        // Solo permitir eliminar movimientos del usuario autenticado
+        $sql = "DELETE FROM movimientos 
+                WHERE id = :id AND usuario_id = :usuario_id";
+
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute([
+            ':id' => $id,
+            ':usuario_id' => $usuario_id
+        ]);
+    }
+
     /* ========= LISTAR MOVIMIENTOS (CON FILTROS) ========= */
     public function listarPorUsuario($usuario_id, $desde = null, $hasta = null, $tipo = null, $categoria_id = null)
     {
         $sql = "SELECT
+                    m.id,
                     m.fecha,
                     m.tipo,
                     m.monto,
@@ -129,4 +145,3 @@ class Movimiento
         return $stmt->fetchAll();
     }
 }
-

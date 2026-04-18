@@ -154,6 +154,7 @@
                             <th>🏷️ Categoría</th>
                             <th>💵 Monto</th>
                             <th>📝 Descripción</th>
+                            <th>⚙️ Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -165,11 +166,18 @@
                                 <td><?php echo htmlspecialchars($m['categoria'] ?? '-'); ?></td>
                                 <td class="monto">$<?php echo number_format($m['monto'], 2); ?></td>
                                 <td><?php echo htmlspecialchars($m['descripcion']); ?></td>
+                                <td>
+                                    <a href="index.php?controller=movimiento&action=eliminar&id=<?php echo $m['id']; ?>" 
+                                       class="btn-eliminar" 
+                                       onclick="return confirm('¿Estás seguro de que deseas eliminar este movimiento?');">
+                                        🗑️ Eliminar
+                                    </a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <tr>
-                            <td colspan="5" style="text-align:center; padding:20px; color:#777;">
+                            <td colspan="6" style="text-align:center; padding:20px; color:#777;">
                                 Todavía no hay movimientos registrados.
                             </td>
                         </tr>
