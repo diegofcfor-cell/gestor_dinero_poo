@@ -9,6 +9,18 @@
 <body>
 
 <div class="dashboard-wrapper">
+    <!-- Fondo animado -->
+    <div class="dashboard-bg">
+        <div class="money-item">💰</div>
+        <div class="money-item">💵</div>
+        <div class="money-item">💴</div>
+        <div class="money-item">💶</div>
+        <div class="money-item">💷</div>
+        <div class="money-item">💳</div>
+        <div class="money-item">🏦</div>
+        <div class="money-item">💸</div>
+    </div>
+
     <div class="dashboard-container">
         
         <div class="dashboard-header">
@@ -55,72 +67,77 @@
                 </div>
             </div>
 
-            <!-- NUEVO MOVIMIENTO -->
-            <div class="dashboard-section">
-                <h3><span class="icon">➕</span>Nuevo movimiento</h3>
-                <form method="post" action="index.php?controller=movimiento&action=guardar">
+            <!-- DOS COLUMNAS: NUEVO MOVIMIENTO Y FILTROS -->
+            <div class="two-column-section">
+                
+                <!-- NUEVO MOVIMIENTO -->
+                <div class="dashboard-section">
+                    <h3><span class="icon">➕</span>Nuevo movimiento</h3>
+                    <form method="post" action="index.php?controller=movimiento&action=guardar">
 
-                    <label>Tipo</label>
-                    <select name="tipo" required>
-                        <option value="ingreso">💰 Ingreso</option>
-                        <option value="egreso">💸 Egreso</option>
-                    </select>
+                        <label>Tipo</label>
+                        <select name="tipo" required>
+                            <option value="ingreso">💰 Ingreso</option>
+                            <option value="egreso">💸 Egreso</option>
+                        </select>
 
-                    <label>Categoría</label>
-                    <select name="categoria_id" required>
-                        <?php foreach ($categorias as $c): ?>
-                            <option value="<?php echo $c['id']; ?>">
-                                <?php echo htmlspecialchars($c['nombre']); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                        <label>Categoría</label>
+                        <select name="categoria_id" required>
+                            <?php foreach ($categorias as $c): ?>
+                                <option value="<?php echo $c['id']; ?>">
+                                    <?php echo htmlspecialchars($c['nombre']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
 
-                    <label>Monto</label>
-                    <input type="number" name="monto" step="0.01" required placeholder="0.00">
+                        <label>Monto</label>
+                        <input type="number" name="monto" step="0.01" required placeholder="0.00">
 
-                    <label>Descripción</label>
-                    <input type="text" name="descripcion" placeholder="Describe el movimiento...">
+                        <label>Descripción</label>
+                        <input type="text" name="descripcion" placeholder="Describe...">
 
-                    <button type="submit">💾 Guardar movimiento</button>
-                </form>
-            </div>
+                        <button type="submit">💾 Guardar</button>
+                    </form>
+                </div>
 
-            <!-- FILTROS -->
-            <div class="dashboard-section">
-                <h3><span class="icon">🔍</span>Filtros</h3>
-                <form method="get" action="index.php">
+                <!-- FILTROS -->
+                <div class="dashboard-section">
+                    <h3><span class="icon">🔍</span>Filtros</h3>
+                    <form method="get" action="index.php">
 
-                    <input type="hidden" name="controller" value="dashboard">
+                        <input type="hidden" name="controller" value="dashboard">
 
-                    <label>Desde</label>
-                    <input type="date" name="desde" value="<?php echo $_GET['desde'] ?? ''; ?>">
+                        <label>Desde</label>
+                        <input type="date" name="desde" value="<?php echo $_GET['desde'] ?? ''; ?>">
 
-                    <label>Hasta</label>
-                    <input type="date" name="hasta" value="<?php echo $_GET['hasta'] ?? ''; ?>">
+                        <label>Hasta</label>
+                        <input type="date" name="hasta" value="<?php echo $_GET['hasta'] ?? ''; ?>">
 
-                    <label>Tipo</label>
-                    <select name="tipo">
-                        <option value="">Todos</option>
-                        <option value="ingreso" <?php echo (($_GET['tipo'] ?? '') === 'ingreso') ? 'selected' : ''; ?>>Ingresos</option>
-                        <option value="egreso" <?php echo (($_GET['tipo'] ?? '') === 'egreso') ? 'selected' : ''; ?>>Egresos</option>
-                    </select>
+                        <label>Tipo</label>
+                        <select name="tipo">
+                            <option value="">Todos</option>
+                            <option value="ingreso" <?php echo (($_GET['tipo'] ?? '') === 'ingreso') ? 'selected' : ''; ?>>Ingresos</option>
+                            <option value="egreso" <?php echo (($_GET['tipo'] ?? '') === 'egreso') ? 'selected' : ''; ?>>Egresos</option>
+                        </select>
 
-                    <label>Categoría</label>
-                    <select name="categoria_id">
-                        <option value="">Todas</option>
-                        <?php foreach ($categorias as $c): ?>
-                            <option value="<?php echo $c['id']; ?>"
-                                <?php echo (($_GET['categoria_id'] ?? '') == $c['id']) ? 'selected' : ''; ?>>
-                                <?php echo htmlspecialchars($c['nombre']); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                        <label>Categoría</label>
+                        <select name="categoria_id">
+                            <option value="">Todas</option>
+                            <?php foreach ($categorias as $c): ?>
+                                <option value="<?php echo $c['id']; ?>"
+                                    <?php echo (($_GET['categoria_id'] ?? '') == $c['id']) ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($c['nombre']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
 
-                    <div class="button-group">
-                        <button type="submit">🔍 Filtrar</button>
-                        <button type="button" onclick="window.print()">🖨️ Imprimir</button>
-                    </div>
-                </form>
+                        <div class="button-group">
+                            <button type="submit">🔍 Filtrar</button>
+                            <button type="button" onclick="window.print()">🖨️ Imprimir</button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
 
             <!-- MOVIMIENTOS -->
@@ -150,8 +167,7 @@
                     <?php else : ?>
                         <tr>
                             <td colspan="5" style="text-align:center; padding:20px; color:#777;">
-                                Todavía no hay movimientos registrados.<br>
-                                Usá el formulario de arriba para agregar el primero.
+                                Todavía no hay movimientos registrados.
                             </td>
                         </tr>
                     <?php endif; ?>
@@ -181,8 +197,7 @@ if (canvas) {
                 '#1abc9c',
                 '#2ecc71',
                 '#16a085',
-                '#c0392b',
-                '#d35400'
+                '#c0392b'
             ],
             borderColor: 'rgba(255, 255, 255, 0.3)',
             borderWidth: 2
