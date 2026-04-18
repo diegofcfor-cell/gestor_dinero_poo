@@ -1,97 +1,43 @@
-# Gestor de Dinero
+# 💰 Gestor de Dinero POO
 
-## Des web desarrollada en **PHP** utilizando **Programación Orientada a Objetos (POO)** y una arquitectura **MVC con Front Controller**.## Descripción
+Una aplicación web moderna para gestionar tus ingresos y egresos personales con gráficos interactivos.
 
-El sistema permite a múltiples usuarios registrar ingresos y egresos, categorizarlos, filtrarlos y visualizar la información mediante totales y gráficos.
+## 📸 Características
 
----
+✅ Autenticación segura con registro y login
+✅ Registro de movimientos (ingresos y egresos)
+✅ Gestión de categorías personalizables
+✅ Gráficos interactivos de egresos por categoría
+✅ Filtros avanzados por fecha, tipo y categoría
+✅ Interfaz moderna con animaciones
 
-## Funcionalidades principales
+## 🛠️ Requisitos
 
-- Autenticación de usuarios (login / logout)
-- Sistema **multiusuario** con aislamiento de datos
-- Registro de ingresos y egresos
-- Gestión de categorías
-- Filtros por fecha, tipo y categoría
-- Totales dinámicos (ingresos, egresos y saldo)
-- Gráfico de egresos por categoría (Chart.js)
-- Alta de usuarios desde la aplicación
-- Interfaz orientada a la experiencia de usuario (UX)
+- PHP 7.4 o superior
+- MySQL 5.7 o superior
+- Servidor web Apache
 
----
+## 📥 Instalación Local
 
-## Arquitectura
+1. Clonar el repositorio
+   git clone https://github.com/diegofcfor-cell/gestor_dinero_poo.git
 
-El proyecto utiliza una arquitectura **MVC**:
+2. Configurar la base de datos
+   mysql -h localhost -u gestor -p1234 gestor_dinero
 
-- **Modelos**: manejo de datos y reglas de negocio
-- **Vistas**: presentación y experiencia de usuario
-- **Controladores**: lógica de aplicación
-- **Front Controller**: un único punto de entrada (`public/index.php`)
+3. Ejecutar la aplicación
+   php -S localhost:8000 -t public
 
-Estructura del proyecto:
+4. Acceder a: http://localhost:8000/?controller=dashboard
 
-gestor_dinero_poo/
-├── app/
-│   ├── Controllers/
-│   ├── Models/
-│   └── Views/
-├── assets/
-│   └── css/
-├── config/
-├── public/
-│   └── index.php
-└── README.md
+## 🔐 Credenciales de Prueba
 
-## Tecnologías utilizadas
+Correo: diego@example.com
+Contraseña: 1234
 
-- PHP 8+
-- MySQL / MariaDB
-- HTML5
-- CSS3
-- JavaScript
-- Chart.js
-- Apache
+## 🛠️ Tecnologías
 
----
-
-## Usuarios de prueba
-
-El sistema incluye usuarios de prueba:
-
-- **admin**
-- **grupo_7**
-- **Diego**
-
-Cada usuario visualiza únicamente sus propios movimientos.
-
----
-
-## Instalación y uso
-
-1. Clonar o copiar el proyecto en el directorio de Apache:
-
-/var/www/html/gestor_dinero_poo
-
-2. Crear la base de datos y las tablas necesarias en MySQL.
-
-3. Configurar la conexión a la base de datos en:
-
-config/config.php
-
-4. Acceder al sistema desde el navegador:
-
-http://localhost/gestor_dinero_poo/public/
-
-## Justificación técnica
-
-- Se utilizó **POO** para facilitar el mantenimiento y la escalabilidad.
-- El patrón **MVC** permite una separación clara de responsabilidades.
-- El uso de **PDO** asegura consultas seguras frente a inyecciones SQL.
-- El sistema está preparado para ampliarse con roles, reportes y nuevas visualizaciones.
-
----
-
-## Autoría
-
-Trabajo grupal – Usuario base: **grupo_7**
+- Backend: PHP 7.4+
+- Base de datos: MySQL 5.7+
+- Frontend: HTML5, CSS3, JavaScript
+- Gráficos: Chart.js 3.9.1
