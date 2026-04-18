@@ -315,3 +315,30 @@ header a {
         color: black;
     }
 }
+
+/* ===== Enlace de registro en Login ===== */
+
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.login-footer p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.registro-link {
+    color: #3498db;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.registro-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
