@@ -8,6 +8,19 @@
 <body>
 
 <div class="login-wrapper">
+    <!-- Fondo animado -->
+    <div class="money-bg">
+        <div class="money-item">💰</div>
+        <div class="money-item">💵</div>
+        <div class="money-item">💴</div>
+        <div class="money-item">💶</div>
+        <div class="money-item">💷</div>
+        <div class="money-item">💳</div>
+        <div class="money-item">🏦</div>
+        <div class="money-item">💸</div>
+    </div>
+
+    <!-- Moneda de login -->
     <div class="login-box">
 
         <h1>Gestor de Dinero</h1>

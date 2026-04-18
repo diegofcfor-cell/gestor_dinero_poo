@@ -227,82 +227,210 @@ header a {
     font-weight: bold;
 }
 
-/* ===== LOGIN CON FONDO DE IMAGEN ===== */
+/* ===== LOGIN CON FONDO ANIMADO DE DINERO ===== */
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes float-left {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    50% { transform: translateX(-15px) rotate(-3deg); }
+}
+
+@keyframes float-right {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    50% { transform: translateX(15px) rotate(3deg); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
 
 .login-wrapper {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(52, 152, 219, 0.85) 0%, rgba(41, 128, 185, 0.85) 100%), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="money" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse"><text x="50" y="100" font-size="80" fill="rgba(255,255,255,0.1)" text-anchor="middle">💰</text><text x="150" y="50" font-size="60" fill="rgba(255,255,255,0.08)">💵</text><text x="100" y="150" font-size="70" fill="rgba(255,255,255,0.08)">💳</text></pattern></defs><rect width="1200" height="600" fill="url(%23money)"/></svg>');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #d4a574 0%, #c9a961 50%, #b8944e 100%);
+    overflow: hidden;
+    position: relative;
 }
 
+/* Elementos animados de fondo */
+.money-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.money-item {
+    position: absolute;
+    opacity: 0.3;
+    font-size: 60px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.money-item:nth-child(1) { left: 5%; top: 10%; animation: float 8s ease-in-out infinite; }
+.money-item:nth-child(2) { left: 15%; top: 60%; animation: float-left 7s ease-in-out infinite; }
+.money-item:nth-child(3) { right: 10%; top: 20%; animation: float-right 9s ease-in-out infinite; }
+.money-item:nth-child(4) { right: 5%; top: 70%; animation: float 7s ease-in-out infinite; }
+.money-item:nth-child(5) { left: 50%; top: 80%; animation: float-left 8s ease-in-out infinite; }
+.money-item:nth-child(6) { right: 20%; top: 40%; animation: float-right 6s ease-in-out infinite; }
+.money-item:nth-child(7) { left: 10%; top: 40%; animation: pulse-glow 4s ease-in-out infinite; }
+.money-item:nth-child(8) { right: 30%; top: 60%; animation: float 9s ease-in-out infinite; }
+
+/* Forma de moneda para el login-box */
 .login-box {
-    width: 360px;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle at 30% 30%, #ffd700 0%, #ffed4e 10%, #ffd700 20%, #daa520 100%);
+    padding: 40px;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 30px rgba(0,0,0,0.3),
+        inset -5px -5px 15px rgba(0,0,0,0.2),
+        inset 5px 5px 15px rgba(255,255,255,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Borde decorativo de la moneda */
+.login-box::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(184, 148, 78, 0.5);
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
 }
 
 .login-box h1 {
-    margin-top: 0;
+    margin: 0 0 10px 0;
     text-align: center;
-    color: #2c3e50;
-    font-size: 28px;
+    color: #5a4a2a;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+    position: relative;
+    z-index: 11;
 }
 
 .login-box p {
     text-align: center;
-    color: #7f8c8d;
+    color: #6b5a3a;
     margin-bottom: 20px;
+    font-size: 13px;
+    position: relative;
+    z-index: 11;
 }
 
 .login-box label {
-    margin-top: 10px;
+    margin-top: 8px;
+    color: #5a4a2a;
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    z-index: 11;
+}
+
+.login-box input,
+.login-box select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 2px solid #d4a574;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    font-size: 12px;
+    position: relative;
+    z-index: 11;
+}
+
+.login-box input:focus,
+.login-box select:focus {
+    outline: none;
+    border-color: #5a4a2a;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(90, 74, 42, 0.3);
 }
 
 .login-box button {
+    margin-top: 12px;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #5a4a2a 0%, #7a6a4a 100%);
+    border: none;
+    color: #ffd700;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
     width: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 11;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.login-box button:hover {
+    background: linear-gradient(135deg, #7a6a4a 0%, #5a4a2a 100%);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .login-error {
     background: #fdecea;
     color: #922b21;
-    padding: 10px;
+    padding: 8px;
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-align: center;
+    font-size: 12px;
+    position: relative;
+    z-index: 11;
 }
 
 /* ===== Enlace de registro en Login ===== */
 
 .login-footer {
     text-align: center;
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid #ddd;
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(90, 74, 42, 0.3);
+    position: relative;
+    z-index: 11;
 }
 
 .login-footer p {
     margin: 0;
-    color: #7f8c8d;
-    font-size: 14px;
+    color: #5a4a2a;
+    font-size: 12px;
 }
 
 .registro-link {
-    color: #3498db;
+    color: #5a4a2a;
     font-weight: bold;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .registro-link:hover {
-    color: #2980b9;
+    color: #7a6a4a;
     text-decoration: underline;
 }
 
@@ -388,49 +516,6 @@ small {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* ===== Gráfico (≈ 90 mm) ===== */
-
-.grafico-container {
-    width: 340px;      /* ≈ 90 mm */
-    height: 340px;     /* ≈ 90 mm */
-    margin: 0 auto 30px auto; /* centrado */
-}
-
-.grafico-container canvas {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-/* ===== Estilos de impresión ===== */
-@media print {
-
-    body {
-        background: white;
-    }
-
-    header,
-    form,
-    button,
-    .grafico-container {
-        display: none !important;
-    }
-
-    .container {
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-        box-shadow: none;
-    }
-
-    table {
-        font-size: 12px;
-    }
-
-    h1, h2 {
-        color: black;
-    }
 }
 
 /* ===== MEJORAS PARA SECCIONES Y FORMULARIOS ===== */
@@ -628,6 +713,49 @@ small {
     border-left: 4px solid #3498db;
 }
 
+/* ===== Gráfico (≈ 90 mm) ===== */
+
+.grafico-container {
+    width: 340px;      /* ≈ 90 mm */
+    height: 340px;     /* ≈ 90 mm */
+    margin: 0 auto 30px auto; /* centrado */
+}
+
+.grafico-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ===== Estilos de impresión ===== */
+@media print {
+
+    body {
+        background: white;
+    }
+
+    header,
+    form,
+    button,
+    .grafico-container {
+        display: none !important;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    h1, h2 {
+        color: black;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .resumen {
@@ -647,5 +775,15 @@ small {
 
     .button-group {
         flex-direction: column;
+    }
+
+    .login-box {
+        width: 300px;
+        height: 300px;
+        padding: 30px;
+    }
+
+    .login-box h1 {
+        font-size: 20px;
     }
 }
