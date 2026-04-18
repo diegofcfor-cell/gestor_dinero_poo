@@ -31,9 +31,12 @@
 
         </form>
 
+        <div class="login-footer">
+            <p>¿No tienes cuenta? <a href="index.php?controller=usuario&action=register" class="registro-link">Regístrate aquí</a></p>
+        </div>
+
     </div>
 </div>
 
 </body>
 </html>
-
