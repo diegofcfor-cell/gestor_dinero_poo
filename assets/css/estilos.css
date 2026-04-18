@@ -342,3 +342,22 @@ header a {
     color: #2980b9;
     text-decoration: underline;
 }
+
+/* ===== Estilos para formularios de registro ===== */
+
+small {
+    display: block;
+    margin-top: 2px;
+    color: #95a5a6;
+    font-size: 12px;
+}
+
+.login-success {
+    background: #eafaf1;
+    color: #1e8449;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+    border: 1px solid #d5f4e6;
+}

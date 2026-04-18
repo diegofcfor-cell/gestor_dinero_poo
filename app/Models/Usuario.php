@@ -51,6 +51,12 @@ class Usuario
         ]);
     }
 
-
+    /* ========= VERIFICAR SI EL USUARIO EXISTE ========= */
+    public function usuarioExiste($usuario)
+    {
+        $sql = "SELECT id FROM usuarios WHERE usuario = :usuario";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':usuario' => trim($usuario)]);
+        return $stmt->fetch() !== false;
+    }
 }
-
