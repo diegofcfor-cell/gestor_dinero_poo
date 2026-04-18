@@ -832,3 +832,37 @@ small {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== ANIMACIÓN DE PARPADEO ===== */
+
+@keyframes wink {
+    0%, 10%, 20%, 100% { 
+        opacity: 1;
+    }
+    5%, 15% { 
+        opacity: 0.3;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Avatar animado del usuario */
+.user-avatar {
+    font-size: 32px;
+    animation: wink 3s ease-in-out infinite, bounce 2s ease-in-out infinite;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* Estilos del nombre de usuario con avatar */
+.dashboard-user .username {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+    margin: 0;
+}

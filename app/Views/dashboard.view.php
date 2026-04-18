@@ -29,7 +29,10 @@
                 <small>Panel principal</small>
             </div>
             <div class="dashboard-user">
-                <p class="username">👤 <?php echo htmlspecialchars($usuario); ?></p>
+                <p class="username">
+                    <span class="user-avatar">😊</span>
+                    <?php echo htmlspecialchars($usuario); ?>
+                </p>
                 <a href="index.php?controller=login&action=logout" class="logout-link">🔒 Cerrar sesión</a>
             </div>
         </div>
