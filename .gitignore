@@ -1,0 +1,29 @@
+# PHP
+composer.lock
+vendor/
+.env
+.env.local
+
+# Node/npm
+node_modules/
+npm-debug.log
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Caches
+.cache/
+temp/
+tmp/

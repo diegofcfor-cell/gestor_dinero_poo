@@ -1,0 +1,317 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 6px;
+}
+
+/* Títulos */
+h1 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 30px;
+}
+
+/* Separadores */
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+}
+
+/* Formularios */
+form {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+/* Botones */
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background: #3498db;
+    border: none;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    background: #34495e;
+    color: white;
+    padding: 8px;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Links */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+``
+/* ===== Tarjetas de resumen ===== */
+
+.resumen {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.tarjeta {
+    flex: 1;
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.tarjeta span {
+    display: block;
+    font-size: 24px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.tarjeta.ingresos {
+    background-color: #eafaf1;
+    color: #1e8449;
+}
+
+.tarjeta.egresos {
+    background-color: #fdecea;
+    color: #922b21;
+}
+
+.tarjeta.saldo {
+    background-color: #ebf5fb;
+    color: #1b4f72;
+}
+
+/* ===== Señales visuales en tabla ===== */
+
+tr.ingreso td {
+    background-color: #eafaf1;
+}
+
+tr.egreso td {
+    background-color: #fdecea;
+}
+
+td.monto {
+    font-weight: bold;
+    text-align: right;
+}
+
+/* ===== Tabla: legibilidad fina ===== */
+
+/* Alternar filas para escaneo visual */
+table tr:nth-child(even) td {
+    background-color: #fafafa;
+}
+
+/* Hover suave para foco visual */
+table tr:hover td {
+    background-color: #eef2f5;
+}
+
+/* Encabezados más claros */
+th {
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+/* Columnas específicas */
+td {
+    vertical-align: middle;
+}
+
+/* Columna Monto más destacada */
+td.monto {
+    font-size: 15px;
+}
+
+/* Ajuste columnas */
+td:first-child {
+    width: 140px; /* Fecha */
+}
+
+td:nth-child(2) {
+    width: 90px; /* Tipo */
+}
+
+td:nth-child(3) {
+    width: 160px; /* Categoría */
+}
+
+/* ===== Micro UX ===== */
+
+/* Destacar formulario */
+form {
+    border: 1px solid #ddd;
+}
+
+/* Enfoque en campos */
+input:focus, select:focus {
+    outline: none;
+    border: 2px solid #3498db;
+    background-color: #f0f8ff;
+}
+
+/* Botón deshabilitado (futuro) */
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+header h1 {
+    color: #2c3e50;
+}
+
+header small {
+    color: #7f8c8d;
+}
+
+header a {
+    font-weight: bold;
+}
+
+/* ===== LOGIN ===== */
+
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f6f8;
+}
+
+.login-box {
+    width: 360px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.login-box h1 {
+    margin-top: 0;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.login-box p {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.login-box label {
+    margin-top: 10px;
+}
+
+.login-box button {
+    width: 100%;
+}
+
+.login-error {
+    background: #fdecea;
+    color: #922b21;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* ===== Gráfico (≈ 90 mm) ===== */
+
+.grafico-container {
+    width: 340px;      /* ≈ 90 mm */
+    height: 340px;     /* ≈ 90 mm */
+    margin: 0 auto 30px auto; /* centrado */
+}
+
+.grafico-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ===== Estilos de impresión ===== */
+@media print {
+
+    body {
+        background: white;
+    }
+
+    header,
+    form,
+    button,
+    .grafico-container {
+        display: none !important;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    h1, h2 {
+        color: black;
+    }
+}
