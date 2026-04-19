@@ -93,6 +93,15 @@
                             <?php endforeach; ?>
                         </select>
 
+                        <label>💱 Moneda</label>
+                        <select name="moneda_id" required>
+                            <?php foreach ($monedas as $m): ?>
+                                <option value="<?php echo $m['id']; ?>">
+                                    <?php echo $m['simbolo'] . ' ' . htmlspecialchars($m['codigo']); ?> - <?php echo htmlspecialchars($m['nombre']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+
                         <label>Monto</label>
                         <input type="number" name="monto" step="0.01" required placeholder="0.00">
 
@@ -152,6 +161,7 @@
                             <th>📅 Fecha</th>
                             <th>💱 Tipo</th>
                             <th>🏷️ Categoría</th>
+                            <th>💰 Moneda</th>
                             <th>💵 Monto</th>
                             <th>📝 Descripción</th>
                             <th>⚙️ Acciones</th>
@@ -164,7 +174,8 @@
                                 <td><?php echo $m['fecha']; ?></td>
                                 <td><?php echo ($m['tipo'] === 'ingreso') ? '📈 Ingreso' : '📉 Egreso'; ?></td>
                                 <td><?php echo htmlspecialchars($m['categoria'] ?? '-'); ?></td>
-                                <td class="monto">$<?php echo number_format($m['monto'], 2); ?></td>
+                                <td><?php echo $m['simbolo'] . ' ' . htmlspecialchars($m['codigo_moneda'] ?? '-'); ?></td>
+                                <td class="monto"><?php echo number_format($m['monto'], 2); ?></td>
                                 <td><?php echo htmlspecialchars($m['descripcion']); ?></td>
                                 <td>
                                     <a href="index.php?controller=movimiento&action=eliminar&id=<?php echo $m['id']; ?>" 
@@ -177,7 +188,7 @@
                         <?php endforeach; ?>
                     <?php else : ?>
                         <tr>
-                            <td colspan="6" style="text-align:center; padding:20px; color:#777;">
+                            <td colspan="7" style="text-align:center; padding:20px; color:#777;">
                                 Todavía no hay movimientos registrados.
                             </td>
                         </tr>

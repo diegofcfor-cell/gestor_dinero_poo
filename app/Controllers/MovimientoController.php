@@ -18,6 +18,7 @@ class MovimientoController
         $monto        = $_POST['monto'] ?? 0;
         $descripcion  = $_POST['descripcion'] ?? '';
         $categoria_id = $_POST['categoria_id'] ?? null;
+        $moneda_id    = $_POST['moneda_id'] ?? 1;
 
         // Guardar movimiento
         if ($tipo && $monto > 0 && $categoria_id) {
@@ -27,7 +28,8 @@ class MovimientoController
                 $tipo,
                 $monto,
                 $descripcion,
-                $categoria_id
+                $categoria_id,
+                $moneda_id
             );
         }
 

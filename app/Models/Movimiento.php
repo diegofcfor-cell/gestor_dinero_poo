@@ -12,12 +12,12 @@ class Movimiento
     }
 
     /* ========= GUARDAR MOVIMIENTO ========= */
-    public function guardar($usuario_id, $tipo, $monto, $descripcion, $categoria_id)
+    public function guardar($usuario_id, $tipo, $monto, $descripcion, $categoria_id, $moneda_id = 1)
     {
         $sql = "INSERT INTO movimientos
-                (usuario_id, tipo, monto, descripcion, categoria_id, fecha)
+                (usuario_id, tipo, monto, descripcion, categoria_id, moneda_id, fecha)
                 VALUES
-                (:usuario_id, :tipo, :monto, :descripcion, :categoria_id, NOW())";
+                (:usuario_id, :tipo, :monto, :descripcion, :categoria_id, :moneda_id, NOW())";
 
         $stmt = $this->db->prepare($sql);
 
@@ -26,7 +26,8 @@ class Movimiento
             ':tipo'         => $tipo,
             ':monto'        => $monto,
             ':descripcion'  => $descripcion,
-            ':categoria_id' => $categoria_id
+            ':categoria_id' => $categoria_id,
+            ':moneda_id'    => $moneda_id
         ]);
     }
 
@@ -54,9 +55,13 @@ class Movimiento
                     m.tipo,
                     m.monto,
                     m.descripcion,
-                    c.nombre AS categoria
+                    c.nombre AS categoria,
+                    mo.simbolo,
+                    mo.nombre AS moneda,
+                    mo.codigo AS codigo_moneda
                 FROM movimientos m
                 LEFT JOIN categorias c ON m.categoria_id = c.id
+                LEFT JOIN monedas mo ON m.moneda_id = mo.id
                 WHERE m.usuario_id = :usuario_id";
 
         $params = [':usuario_id' => $usuario_id];

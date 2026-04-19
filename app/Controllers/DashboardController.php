@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../Core/Session.php';
 require_once __DIR__ . '/../Models/Movimiento.php';
 require_once __DIR__ . '/../Models/Categoria.php';
+require_once __DIR__ . '/../Models/Moneda.php';
 
 class DashboardController
 {
@@ -21,6 +22,7 @@ class DashboardController
         // 📦 Modelos
         $movimientoModel = new Movimiento();
         $categoriaModel  = new Categoria();
+        $monedaModel     = new Moneda();
 
         // 💰 Movimientos y totales
         $movimientos = $movimientoModel->listarPorUsuario(
@@ -47,9 +49,13 @@ class DashboardController
         // 🗂️ Categorías
         $categorias = $categoriaModel->listar();
 
+        // 💱 Monedas
+        $monedas = $monedaModel->listar();
+
         // 🛡️ Blindaje (evita errores fatales en la vista)
         $movimientos   = $movimientos   ?? [];
         $categorias    = $categorias    ?? [];
+        $monedas       = $monedas       ?? [];
         $totalIngresos = $totalIngresos ?? 0;
         $totalEgresos  = $totalEgresos  ?? 0;
         $saldo         = $saldo         ?? 0;
