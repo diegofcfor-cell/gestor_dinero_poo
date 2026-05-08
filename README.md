@@ -1,4 +1,4 @@
-# 💰 Gestor de Dinero POO
+# 💰 Gestor de Dinero
 
 Una aplicación web moderna para gestionar tus ingresos y egresos personales con gráficos interactivos.
 
